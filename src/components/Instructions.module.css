@@ -1,0 +1,27 @@
+.instruction-container {
+    background-color: rgb(241, 212, 212);
+    width: 100vw;
+    max-width: 90%;
+    margin: 1rem auto;
+    border-radius: 12px;
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.instruction-body {
+    margin: 0 auto;
+}
+
+.instruction-container h2 {
+    text-align: center;
+}
+
+.instruction-list {
+    list-style: circle;
+}
+
+.instruction-list li {
+    margin: 0.5rem 0.2rem;
+    font-weight: bold;
+}
