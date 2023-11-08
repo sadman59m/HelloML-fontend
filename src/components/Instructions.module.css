@@ -9,6 +9,10 @@
     flex-direction: column;
 }
 
+.instruction-container h2 {
+    margin: 0;
+}
+
 .instruction-body {
     margin: 0 auto;
 }

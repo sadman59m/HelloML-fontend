@@ -26,19 +26,20 @@ const mlModels = [
 ]
 
 const Form = () => {
-    const [fileInput, setFileInput] = useState();
+    const [models, setModels] = useState(mlModels);
+    const [fileInput, setFileInput] = useState(null);
     const [fileError, setFileError] = useState(false);
+
     const handleCheckbox = (e) => {
+        console.log(e.target.name);
         const {name, checked} = e.target;
-        mlModels.forEach(model => {
-            model.name === name ? model.checked = checked : model.checked;
-        });
-        
-        console.log(mlModels);
+        const updatedModels = models.map(model => model.name === name ? {...model, checked: checked} : model);
+        setModels(updatedModels);
     }
 
     const fileInputHandler = e => {
         setFileInput(e.target.files[0]);
+        console.log(e.target.files[0]);
         setFileError(false);
     }
 
@@ -50,11 +51,17 @@ const Form = () => {
             return; 
         }
         formData.append('csvFile', fileInput);
-        formData.append('selectedModels', JSON.stringify(mlModels));
+        formData.append('selectedModels', JSON.stringify(models));
         for (const [key, value] of formData.entries()) {
             console.log(key, value);
         }
+        const updatedModels = [...models];
+        updatedModels.forEach(models => models.checked = false);
+        setModels(updatedModels);
+        setFileInput(null);
+        setFileError(false);
     }
+    console.log(models);
     return (
         <>
             <form className={classes.form} onSubmit={formSubmissionHandler}>
@@ -64,20 +71,23 @@ const Form = () => {
                     accept='.csv' 
                     id='csvFileInput' 
                     className={classes["file-upload-box"]}
-                    onChange={fileInputHandler} />
+                    onChange={fileInputHandler}
+                    />
                     {fileError ? <p className={classes.errorMsg}>Please, provide a csv file</p> : null}
                 </div>
                 <div className={classes["form-checkbox-container"]}>
                     <h3>Select Models</h3>
                     <div className={classes["form-checkbox-list"]}>
                         {
-                            mlModels.map((model, index) => {
+                            models.map((model, index) => {
                                 return (
                                 <div className={classes['form-checkbox']} key = {index}>
                                 <input 
                                 type="checkbox" 
                                 name = {model.name} 
-                                onChange={handleCheckbox}/>
+                                onChange={handleCheckbox}
+                                checked={model.checked? true : false}
+                                />
                                 <label>{model.name}</label>
                                 </div>)
                             })
