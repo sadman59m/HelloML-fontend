@@ -1,4 +1,4 @@
-
+import {QueryClientProvider, QueryClient} from 'react-query';
 import './App.css'
 import Instructions from './components/Instructions';
 import Form from './components/Form';
@@ -9,14 +9,18 @@ const dataset_instructions = [
   "The dependent / target variable must in the last column of the dataset",
 ];
 
+const queryClient = new QueryClient();
+
 function App() {
 
   return (
-    <>
-      <Intro/>
-      <Instructions instructions={dataset_instructions} />
-      <Form/>
-    </>
+    <QueryClientProvider client = {queryClient}>
+      <>
+        <Intro/>
+        <Instructions instructions={dataset_instructions} />
+        <Form/>
+      </>
+    </QueryClientProvider>
   )
 }
 

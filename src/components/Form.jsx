@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { usePerformRegressions } from '../hooks/useRrgressions';
 import classes from './Form.module.css';
 
 const mlModels = [
@@ -31,7 +32,7 @@ const Form = () => {
     const [fileError, setFileError] = useState(false);
 
     const handleCheckbox = (e) => {
-        console.log(e.target.name);
+        // console.log(e.target.name);
         const {name, checked} = e.target;
         const updatedModels = models.map(model => model.name === name ? {...model, checked: checked} : model);
         setModels(updatedModels);
@@ -39,8 +40,18 @@ const Form = () => {
 
     const fileInputHandler = e => {
         setFileInput(e.target.files[0]);
-        console.log(e.target.files[0]);
+        // console.log(e.target.files[0]);
         setFileError(false);
+    }
+
+    const {mutate: performRegressions, isLoading, error} = usePerformRegressions();
+
+    if(isLoading) {
+        console.log('Loading...');
+    }
+
+    if(error) {
+        console.log(error);
     }
 
     const formSubmissionHandler = e => {
@@ -52,6 +63,10 @@ const Form = () => {
         }
         formData.append('csvFile', fileInput);
         formData.append('selectedModels', JSON.stringify(models));
+
+        // Declaring the muatation fuction
+        performRegressions(formData);
+
         for (const [key, value] of formData.entries()) {
             console.log(key, value);
         }
@@ -61,7 +76,7 @@ const Form = () => {
         setFileInput(null);
         setFileError(false);
     }
-    console.log(models);
+    // console.log(models);
     return (
         <>
             <form className={classes.form} onSubmit={formSubmissionHandler}>
