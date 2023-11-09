@@ -73,7 +73,6 @@ const Form = () => {
         const updatedModels = [...models];
         updatedModels.forEach(models => models.checked = false);
         setModels(updatedModels);
-        setFileInput(null);
         setFileError(false);
     }
     // console.log(models);
