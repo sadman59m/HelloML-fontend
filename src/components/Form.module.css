@@ -135,7 +135,7 @@ input[type="checkbox"] {
 }
 
 .submitBtn {
-    animation: slideIn 0.2s linear;
+    animation: slideIn 0.5s ease-in;
 }
 
 .submitBtn:hover {
@@ -147,7 +147,7 @@ input[type="checkbox"] {
     background-color: #eee;
     color: #111;
     cursor: auto;
-    animation: slideIn 0.5s linear;
+    animation: slideIn 0.5s ease-in;
 }
 
 .isDone {
@@ -156,7 +156,7 @@ input[type="checkbox"] {
 }
 
 .hasFailed {
-    animation: slideIn 0.5s linear;
+    animation: slideIn 0.5s ease-in;
     background-color: red;
 }
 .hasFailed:hover {

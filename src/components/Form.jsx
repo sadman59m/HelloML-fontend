@@ -153,8 +153,8 @@ const Form = ({getData}) => {
                 </div>
                 <div className={classes.splitRatioContainer}>
                     <h3>Enter Split Ration between 0 - 1</h3>
-                    <p>For Example, 0.2, there will 80% data for training data, 20% for testing data.</p>
-                    <p>It is advised to enter a value between 0.5 to 0.9.</p>
+                    <p>For Example, 0.2, there will be 20% for testing data, 80% data for training data.</p>
+                    <p>It is advised to enter a value between 0.5 to 0.9</p>
                     <input 
                     className={classes.ratioInput}
                     type="number" 
