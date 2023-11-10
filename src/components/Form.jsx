@@ -48,7 +48,7 @@ const Form = ({getData}) => {
     }
 
     const getPreprocessedData = (data) => {
-        getData(data);
+        getData(data.data);
         setIsDone(true)
         setTimeout(()=>{
             setIsDone(false)
@@ -57,12 +57,14 @@ const Form = ({getData}) => {
 
     const {mutate: performRegressions, isLoading, error} = usePerformRegressions(getPreprocessedData);
 
-    if(isLoading) {
-        console.log('Loading...');
-    }
-
+    let badRequestMsg;
     if(error) {
         console.log(error);
+        if(error.response) {
+            badRequestMsg = error.response.data.errorMessage;
+        }
+        // badRequestMsg = error.response.data.errorMessage;
+        getData({error: true});
     }
 
     const formSubmissionHandler = e => {
@@ -132,6 +134,11 @@ const Form = ({getData}) => {
                     Operation Failed. Retry?
                 </button>}
                 </div>
+                {error && 
+                <div className={classes.errorMessageBox}>
+                    {badRequestMsg && <p>{badRequestMsg}</p>}
+                    <p>{error.message}</p>
+                </div>}
             </form>
         </>
     )

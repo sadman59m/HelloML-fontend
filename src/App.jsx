@@ -17,10 +17,16 @@ const queryClient = new QueryClient();
 
 function App() {
   const [preprocessedData, setPreprocessedData] = useState();
+  const [hasResult, setHasResult] = useState(false);
 
   const fetchPreprocessedData = (data) => {
     // console.log(data.data);
-    setPreprocessedData(data.data);
+    if(data.error) {
+      setHasResult(false);
+      return;
+    }
+    setPreprocessedData(data);
+    setHasResult(true);
   }
   console.log(preprocessedData);
 
@@ -30,7 +36,7 @@ function App() {
         <Intro/>
         <Instructions instructions={dataset_instructions} />
         <Form getData = {fetchPreprocessedData}/>
-        {preprocessedData && <Result data={preprocessedData}/>}
+        {hasResult && preprocessedData && <Result data={preprocessedData}/>}
       </>
     </QueryClientProvider>
   )
