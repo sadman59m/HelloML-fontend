@@ -40,3 +40,7 @@
     margin: 0.3rem 0;
     border-radius: 12px;
 }
+
+.errorMsg p {
+    margin: 0.2rem;
+}

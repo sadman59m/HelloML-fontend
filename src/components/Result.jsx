@@ -6,9 +6,9 @@ import { useState } from 'react';
 const Result = ({data}) => {
     // const [csvContent, setCsvContent] = useState(null);
     const [isError, setIsError] = useState(false);
+    const [errorMsg, setErrorMsg] = useState(null);
     const successStatus = data.preprocessSuccess;
     const fileName = successStatus ? data.fileInfo.fileName : undefined;
-    console.log(fileName);
 
     const handleFileDownload = async () => {
         try {
@@ -36,9 +36,9 @@ const Result = ({data}) => {
         catch(err) {
             console.log(err);
             setIsError(true);
+            setErrorMsg(err.message);
         }
     }
-
 
     return (
         <div className={classes.resultContainer}>
@@ -47,9 +47,14 @@ const Result = ({data}) => {
                 <p>Operation Successful</p>
                 <div className={classes.actionContainer}>
                     <button className={classes.downloadBtn} onClick={handleFileDownload}>
-                        Download Preprocessed File
+                        Download The Preprocessed File
                     </button>
-                    {isError && <p className={classes.errorMsg}>Trouble Downloading File. Try again Later.</p>}
+                    {isError &&
+                    <div  className={classes.errorMsg}>
+                        <p>Trouble Downloading File. Try again Later.</p>
+                        <p>{errorMsg}</p>
+                    </div>
+                    }
                 </div>
                 
                 {/* {csvContent && (

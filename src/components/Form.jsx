@@ -32,6 +32,8 @@ const Form = ({getData}) => {
     const [models, setModels] = useState(mlModels);
     const [fileInput, setFileInput] = useState(null);
     const [fileError, setFileError] = useState(false);
+    const [splitRationInput, setSplitRationInput] = useState(0.2);
+    const [rationError, setRationError] = useState(false);
     const [isDone, setIsDone] = useState(false);
 
     const handleCheckbox = (e) => {
@@ -45,6 +47,20 @@ const Form = ({getData}) => {
         setFileInput(e.target.files[0]);
         // console.log(e.target.files[0]);
         setFileError(false);
+    }
+
+    const handleSplitRationInput = e => {
+        const rationValue = e.target.value;
+        if(!rationValue) {
+            setRationError(false);
+            return;
+        }
+        if(rationValue <= 0.0 || rationValue >= 1.0) {
+            setRationError(true);
+            return;
+        }
+        setSplitRationInput(rationValue);
+        setRationError(false);
     }
 
     const getPreprocessedData = (data) => {
@@ -75,7 +91,22 @@ const Form = ({getData}) => {
             return; 
         }
         formData.append('csvFile', fileInput);
-        formData.append('selectedModels', JSON.stringify(models));
+        if(rationError) {
+            return;
+        }
+        if(!splitRationInput) {
+            setSplitRationInput(0.2);
+            return;
+        }
+        const regressionData = [
+            [...models],
+            {
+                splitRatio: splitRationInput
+            }
+        ];
+        console.log(regressionData);
+
+        formData.append('selectedModels', JSON.stringify(regressionData));
 
         // Declaring the muatation fuction
         performRegressions(formData);
@@ -84,6 +115,7 @@ const Form = ({getData}) => {
         const updatedModels = [...models];
         updatedModels.forEach(models => models.checked = false);
         setModels(updatedModels);
+        // setSplitRationInput(0.2);
         setFileError(false);
     }
 
@@ -93,6 +125,7 @@ const Form = ({getData}) => {
         submitBtnClasses = classes.isDone;
     }
     // console.log(models);
+    console.log(splitRationInput);
     return (
         <>
             <form className={classes.form} onSubmit={formSubmissionHandler}>
@@ -104,7 +137,27 @@ const Form = ({getData}) => {
                     className={classes["file-upload-box"]}
                     onChange={fileInputHandler}
                     />
-                    {fileError ? <p className={classes.errorMsg}>Please, provide a csv file</p> : null}
+                    {fileError &&
+                    <div className={classes.inputErrorMsg}>
+                        <p>Must provide a csv file</p>
+                    </div>
+                    }
+                </div>
+                <div className={classes.splitRatioContainer}>
+                    <h3>Enter Split Ration between 0 - 1</h3>
+                    <p>For Example, 0.2, there will 80% data for training data, 20% for testing data.</p>
+                    <p>It is advised to enter a value between 0.5 to 0.9.</p>
+                    <input 
+                    className={classes.ratioInput}
+                    type="number" 
+                    step="0.01"
+                    placeholder='default is set to 0.2'
+                    onChange={handleSplitRationInput}
+                    />
+                    {rationError &&
+                    <div className={classes.inputErrorMsg}>
+                        <p>Split Ration must be between 0 and 1</p>
+                    </div>}
                 </div>
                 <div className={classes["form-checkbox-container"]}>
                     <h3>Select Models</h3>
