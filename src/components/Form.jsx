@@ -1,7 +1,9 @@
+/* eslint-disable react/prop-types */
 
 import { useState } from 'react';
 import { usePerformRegressions } from '../hooks/useRrgressions';
 import classes from './Form.module.css';
+import LoadingWheel from './UI/LoadingWheel';
 
 const mlModels = [
     {
@@ -26,10 +28,11 @@ const mlModels = [
     }
 ]
 
-const Form = () => {
+const Form = ({getData}) => {
     const [models, setModels] = useState(mlModels);
     const [fileInput, setFileInput] = useState(null);
     const [fileError, setFileError] = useState(false);
+    const [isDone, setIsDone] = useState(false);
 
     const handleCheckbox = (e) => {
         // console.log(e.target.name);
@@ -44,7 +47,15 @@ const Form = () => {
         setFileError(false);
     }
 
-    const {mutate: performRegressions, isLoading, error} = usePerformRegressions();
+    const getPreprocessedData = (data) => {
+        getData(data);
+        setIsDone(true)
+        setTimeout(()=>{
+            setIsDone(false)
+        }, 2000);
+    }
+
+    const {mutate: performRegressions, isLoading, error} = usePerformRegressions(getPreprocessedData);
 
     if(isLoading) {
         console.log('Loading...');
@@ -67,13 +78,16 @@ const Form = () => {
         // Declaring the muatation fuction
         performRegressions(formData);
 
-        for (const [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
         const updatedModels = [...models];
         updatedModels.forEach(models => models.checked = false);
         setModels(updatedModels);
         setFileError(false);
+    }
+
+    // seeting css classes
+    let submitBtnClasses = classes.submitBtn;
+    if(isDone) {
+        submitBtnClasses = classes.isDone;
     }
     // console.log(models);
     return (
@@ -108,7 +122,16 @@ const Form = () => {
                         }
                     </div>
                 </div>
-                <button className={classes.submitBtn}>Perform Actions</button>
+                <div className={classes.actionContainer}>
+                {!isLoading && !error && 
+                <button className={submitBtnClasses}>
+                    {isDone ? "Completed" : "Perform Actions"}
+                </button>}
+                {isLoading && !error && <div className={classes.loadingBox}><LoadingWheel/></div>}
+                {error && <button className={classes.hasFailed}>
+                    Operation Failed. Retry?
+                </button>}
+                </div>
             </form>
         </>
     )

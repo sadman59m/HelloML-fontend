@@ -1,0 +1,32 @@
+.loadingContainer {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .loading::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border: 3px solid #333;
+    border-top-color: transparent;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: loader 0.8s linear infinite;
+  }
+  
+  @keyframes loader {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

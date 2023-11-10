@@ -1,10 +1,11 @@
+/* eslint-disable react/prop-types */
 import classes from './DfTable.module.css';
 
 const DfTable = ({serial, dataHead, data}) => {
 
     return (
         <div className={classes.tableContainer}>
-            <p>Example Sample Datasaet {serial}</p>
+            <p>Example Datasaet {serial}</p>
             <table className={classes.table}>
                 <thead>
                     {dataHead.map((row, index) => {

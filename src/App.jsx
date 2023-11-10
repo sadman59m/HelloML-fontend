@@ -3,6 +3,8 @@ import './App.css'
 import Instructions from './components/Instructions';
 import Form from './components/Form';
 import Intro from './components/Intro';
+import Result from './components/Result';
+import { useState } from 'react';
 
 const dataset_instructions = [
   "The dataset must be in the csv format",
@@ -14,21 +16,21 @@ const dataset_instructions = [
 const queryClient = new QueryClient();
 
 function App() {
+  const [preprocessedData, setPreprocessedData] = useState();
 
-  // useEffect(() => {
-  //   axios.get("http://127.0.0.1:8000/api/regressions/")
-  //   .then(res => {
-  //     console.log(res);
-  //   })
-  //   .catch(err => console.log(err));
-  // }, []);
+  const fetchPreprocessedData = (data) => {
+    // console.log(data.data);
+    setPreprocessedData(data.data);
+  }
+  console.log(preprocessedData);
 
   return (
     <QueryClientProvider client = {queryClient}>
       <>
         <Intro/>
         <Instructions instructions={dataset_instructions} />
-        <Form/>
+        <Form getData = {fetchPreprocessedData}/>
+        {preprocessedData && <Result data={preprocessedData}/>}
       </>
     </QueryClientProvider>
   )

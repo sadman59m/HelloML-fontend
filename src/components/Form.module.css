@@ -73,26 +73,72 @@ input[type="checkbox"] {
     margin-right: 0.7rem;
 }
 
-.submitBtn {
+.actionContainer {
     width: 400px;
-    padding: 1rem 2rem;
     margin: 1rem 0;
-    color: white;
-    background-color: rgb(24, 85, 218);
     box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.25);
-    font-weight: 600;
-    font-size: 1.3rem;
     border: none;
     border-radius: 50px;
+    overflow: hidden;
+}
+
+.submitBtn,
+.isDone,
+.loadingBox,
+.hasFailed {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background-color: rgb(24, 85, 218);
+    color: white;
     cursor: pointer;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1.3rem;
+ 
+}
+
+.submitBtn {
+    animation: slideIn 0.2s linear;
 }
 
 .submitBtn:hover {
     background-color: rgb(54, 107, 221) ;
 }
 
+.loadingBox {
+    padding: 0.05rem 0.02rem;
+    background-color: #eee;
+    color: #111;
+    cursor: auto;
+    animation: slideIn 0.3s linear;
+}
+
+.isDone {
+    animation: slideIn 0.3s linear;
+    background-color: green;
+}
+
+.hasFailed {
+    animation: slideIn 0.3s linear;
+    background-color: red;
+}
+
 .errorMsg {
     color: red;
     font-size: 1rem;
     margin: 0.5rem;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50%);
+        /* opacity: 0; */
+    }
+    to {
+        transform: translateY(0);
+        /* opacity: 1; */
+    }
 }
