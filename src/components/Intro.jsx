@@ -15,6 +15,7 @@ const Intro = () => {
                     <li>The missing numerical data rows will be placed with mean value.</li>
                     <li>The categorical data will encoded to make the dataset suitable for regression models.</li>
                     <li>The preprocessed csv file will downloadable.</li>
+                    <li>The preprocessor file can be imidiately applid to Regression Models</li>
                     <li>Build model and show R2 score for the selected Models.</li>
                 </ul>
             </div>               
