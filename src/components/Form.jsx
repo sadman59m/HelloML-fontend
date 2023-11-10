@@ -80,6 +80,7 @@ const Form = ({getData}) => {
         // Declaring the muatation fuction
         performRegressions(formData);
 
+        getData({error: true});
         const updatedModels = [...models];
         updatedModels.forEach(models => models.checked = false);
         setModels(updatedModels);
