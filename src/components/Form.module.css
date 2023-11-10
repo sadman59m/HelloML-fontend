@@ -147,16 +147,16 @@ input[type="checkbox"] {
     background-color: #eee;
     color: #111;
     cursor: auto;
-    animation: slideIn 0.3s linear;
+    animation: slideIn 0.5s linear;
 }
 
 .isDone {
-    animation: slideIn 0.3s linear;
+    animation: slideIn 0.5s linear;
     background-color: green;
 }
 
 .hasFailed {
-    animation: slideIn 0.3s linear;
+    animation: slideIn 0.5s linear;
     background-color: red;
 }
 .hasFailed:hover {
@@ -189,11 +189,11 @@ input[type="checkbox"] {
 
 @keyframes slideIn {
     from {
-        transform: translateY(-50%);
-        /* opacity: 0; */
+        transform: translateX(-100%);
+        opacity: 0;
     }
     to {
-        transform: translateY(0);
-        /* opacity: 1; */
+        transform: translateX(0);
+        opacity: 1;
     }
 }

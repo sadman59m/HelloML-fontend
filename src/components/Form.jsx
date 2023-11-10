@@ -7,22 +7,27 @@ import LoadingWheel from './UI/LoadingWheel';
 
 const mlModels = [
     {
+        id: 0,
         name: 'Linear Regression',
         checked: false,
     },
     {
+        id: 1,
         name: 'Polynomial Linear Regression',
         checked: false,
     }, 
     {
+        id: 2,
         name: "Support Vector Regression",
         checked: false,
     },
     {
+        id: 3,
         name: "Decision Tree Regression",
         checked: false,
     },
     {
+        id: 4,
         name: "Random Forest Regression",
         checked: false,
     }
@@ -35,6 +40,9 @@ const Form = ({getData}) => {
     const [splitRationInput, setSplitRationInput] = useState(0.2);
     const [rationError, setRationError] = useState(false);
     const [isDone, setIsDone] = useState(false);
+
+    console.log(mlModels);
+    console.log(models);
 
     const handleCheckbox = (e) => {
         // console.log(e.target.name);
@@ -68,7 +76,7 @@ const Form = ({getData}) => {
         setIsDone(true)
         setTimeout(()=>{
             setIsDone(false)
-        }, 2000);
+        }, 5000);
     }
 
     const {mutate: performRegressions, isLoading, error} = usePerformRegressions(getPreprocessedData);

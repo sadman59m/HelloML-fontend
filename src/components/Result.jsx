@@ -9,6 +9,7 @@ const Result = ({data}) => {
     const [errorMsg, setErrorMsg] = useState(null);
     const successStatus = data.preprocessSuccess;
     const fileName = successStatus ? data.fileInfo.fileName : undefined;
+    console.log(data);
 
     const handleFileDownload = async () => {
         try {
@@ -63,6 +64,12 @@ const Result = ({data}) => {
                 </div>
                 )} */}
             </div>
+            }
+            {!successStatus && 
+                <div>
+                    <h1>Operation Failed.</h1>
+                    <p>{data.errorMessage}</p>
+                </div>
             }
         </div>
     );
