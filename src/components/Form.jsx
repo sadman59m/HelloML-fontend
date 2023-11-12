@@ -13,21 +13,16 @@ const mlModels = [
     },
     {
         id: 1,
-        name: 'Polynomial Linear Regression',
-        checked: false,
-    }, 
-    {
-        id: 2,
         name: "Support Vector Regression",
         checked: false,
     },
     {
-        id: 3,
+        id: 2,
         name: "Decision Tree Regression",
         checked: false,
     },
     {
-        id: 4,
+        id: 3,
         name: "Random Forest Regression",
         checked: false,
     }
@@ -63,7 +58,7 @@ const Form = ({getData}) => {
             setRationError(false);
             return;
         }
-        if(rationValue <= 0.0 || rationValue >= 1.0) {
+        if(rationValue < 0.1 || rationValue > 0.9) {
             setRationError(true);
             return;
         }
@@ -152,9 +147,9 @@ const Form = ({getData}) => {
                     }
                 </div>
                 <div className={classes.splitRatioContainer}>
-                    <h3>Enter Split Ration between 0 - 1</h3>
+                    <h3>Enter Split Ration between 0.1 - 0.9</h3>
                     <p>For Example, 0.2, there will be 20% for testing data, 80% data for training data.</p>
-                    <p>It is advised to enter a value between 0.5 to 0.9</p>
+                    <p>It is advised to enter a value between 0.2 to 0.4</p>
                     <input 
                     className={classes.ratioInput}
                     type="number" 
@@ -164,7 +159,7 @@ const Form = ({getData}) => {
                     />
                     {rationError &&
                     <div className={classes.inputErrorMsg}>
-                        <p>Split Ration must be between 0 and 1</p>
+                        <p>Split Ration must be between 0.1 and 0.9</p>
                     </div>}
                 </div>
                 <div className={classes["form-checkbox-container"]}>
