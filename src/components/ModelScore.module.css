@@ -1,6 +1,6 @@
 .scoreContainer {
     width: 60%;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     background-color: rgb(212, 255, 249);
     border-radius: 12px;
     overflow: hidden;
@@ -10,7 +10,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0.5rem;
     animation: slideDown 0.5s linear;
 }
 
@@ -29,7 +28,7 @@
     width: 100%;
     margin: 0.5rem 0rem 0.7rem 0rem;
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1rem;
     /* text-align: center; */
 }
 

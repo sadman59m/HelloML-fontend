@@ -3,7 +3,7 @@
     max-width: 90%;
     margin: 1rem auto;
     padding: 1rem;
-    background-color: rgb(143, 203, 243);
+    background-color: rgb(188, 220, 243);
     border-radius: 12px;
     overflow: hidden;
     animation: slideDown 0.5s linear; 
@@ -13,14 +13,27 @@
     animation: slideDown 0.5s linear;
 }
 
+.modelScoreContainer p {
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0.2rem;
+}
+
 .actionContainer {
     width: 100%;
     text-align: center;
+    margin-top: 3rem;
+}
+
+.actionContainer p {
+    margin: 1rem 0 0.5rem 0;
+    font-weight: 600;
 }
 
 .downloadBtn {
     width: 400px;
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     padding: 1rem 2rem;
     background: rgb(218, 120, 10);
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.25);
@@ -45,6 +58,26 @@
     padding: 1rem 0.5rem;
     margin: 0.3rem 0;
     border-radius: 12px;
+}
+
+.successMessage {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: rgb(27, 155, 27);
+}
+
+.operationFailed {
+    color: rgb(196, 17, 17);
+    text-align: center;
+    font-size: 1.3rem;
+    margin: 0.5rem 1rem;
+}
+
+.operationFailed p {
+    font-size: 1rem;
+    color: black;
+    font-weight: 600;
 }
 
 .errorMsg p {

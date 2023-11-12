@@ -181,6 +181,11 @@ const Form = ({getData}) => {
                         }
                     </div>
                 </div>
+                {error && 
+                <div className={classes.errorMessageBox}>
+                    {badRequestMsg && <p>{badRequestMsg}</p>}
+                    <p>{error.message}</p>
+                </div>}
                 <div className={classes.actionContainer}>
                 {!isLoading && !error && 
                 <button className={submitBtnClasses}>
@@ -191,11 +196,11 @@ const Form = ({getData}) => {
                     Operation Failed. Retry?
                 </button>}
                 </div>
-                {error && 
+                {/* {error && 
                 <div className={classes.errorMessageBox}>
                     {badRequestMsg && <p>{badRequestMsg}</p>}
                     <p>{error.message}</p>
-                </div>}
+                </div>} */}
             </form>
         </>
     )

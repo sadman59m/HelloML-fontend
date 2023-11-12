@@ -54,18 +54,25 @@ const Result = ({data}) => {
         <div className={classes.resultContainer}>
             {successStatus && 
             <div>
-                <p>Operation Successful</p>
+                <p className={classes.successMessage}>Operation Successful</p>
                 <div className={classes.modelScoreContainer}>
+                    {resultObjectLength > 0 && 
+                    <>
+                     <p>Provided Split Ratio is {data.splitRatio}.</p>
+                     <p>Data was splited as {Math.floor(data.splitRatio*100)}% test data, {Math.floor((1 - data.splitRatio)*100)}% trainig data.</p>
+                    </>}
                     <ModelScore scoreObjectData = {modelResultsObject} 
                     scoreObjectLength = {resultObjectLength} />
+                    {resultObjectLength > 0 && <p>R<sup>2</sup> between 0.7 and 1 is considered good. 0.5 - 0.7 acceptable. Below 0.5 might not be useful for predictions.</p>}
                 </div>
                 <div className={classes.actionContainer}>
+                    <p>You can download the preprocessed csv file to use in your models</p>
                     <button className={classes.downloadBtn} onClick={handleFileDownload}>
-                        Download The Preprocessed File
+                        Download File
                     </button>
                     {isError &&
                     <div  className={classes.errorMsg}>
-                        <p>Trouble Downloading File. Try again Later.</p>
+                        <p>Trouble Downloading File. Try again Later</p>
                         <p>{errorMsg}</p>
                     </div>
                     }
@@ -79,9 +86,9 @@ const Result = ({data}) => {
             </div>
             }
             {!successStatus && 
-                <div>
-                    <h1>Operation Failed.</h1>
-                    <p>{data.errorMessage}</p>
+                <div className={classes.operationFailed}>
+                    <h3>Operation Failed.</h3>
+                    <p>{data.errorMessage}.</p>
                 </div>
             }
         </div>

@@ -8,8 +8,8 @@ const ModelScore = ({scoreObjectData, scoreObjectLength}) => {
             <div className={classes.scoreListContainer}>
                 <ul className={classes.scoreList}>
                     <li className={classes.scoreListHead}>
-                        <p>Regression Model</p>
-                        <p>R2 Score</p>
+                        <p>Selected Models</p>
+                        <p>R<sup>2</sup> Scores</p>
                     </li>
                     {Object.keys(scoreObjectData).map(key => (
                         <li className={classes.scoreListValues} key={key}>
@@ -22,7 +22,7 @@ const ModelScore = ({scoreObjectData, scoreObjectLength}) => {
             }
             {scoreObjectLength <= 0 && 
             <div className={classes.emptyModelList}>
-                <h3>No models were selected</h3>
+                <h3>No models were selected to show R<sup>2</sup> score</h3>
             </div>}
         </div>
     );

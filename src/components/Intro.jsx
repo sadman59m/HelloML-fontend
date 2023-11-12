@@ -23,7 +23,7 @@ const Intro = () => {
                     <li>Feature Scaling will be done using Standardisation Technique.</li>
                     <li>The preprocessed csv file will downloadable.</li>
                     <li>The preprocessor file can be imidiately applid to Regression Models</li>
-                    <li>Build model and show R2 score for the selected Models.</li>
+                    <li>Build model on the preprocessed dataset and calculate R<sup>2</sup> Score for each selected Models</li>
                 </ul>
             </div>               
         </div>
