@@ -5,6 +5,12 @@
     padding: 1rem;
     background-color: rgb(143, 203, 243);
     border-radius: 12px;
+    overflow: hidden;
+    animation: slideDown 0.5s linear; 
+}
+
+.modelScoreContainer {
+    animation: slideDown 0.5s linear;
 }
 
 .actionContainer {
@@ -43,4 +49,17 @@
 
 .errorMsg p {
     margin: 0.2rem;
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }

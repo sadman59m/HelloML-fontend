@@ -2,6 +2,7 @@
 import axios from 'axios';
 import classes from './Result.module.css';
 import { useState } from 'react';
+import ModelScore from './ModelScore';
 
 const Result = ({data}) => {
     // const [csvContent, setCsvContent] = useState(null);
@@ -10,6 +11,14 @@ const Result = ({data}) => {
     const successStatus = data.preprocessSuccess;
     const fileName = successStatus ? data.fileInfo.fileName : undefined;
     console.log(data);
+
+    let modelResultsObject;
+    let resultObjectLength;
+
+    if(successStatus) {
+        modelResultsObject = data.model_results;
+        resultObjectLength = Object.entries(modelResultsObject).length;
+    }
 
     const handleFileDownload = async () => {
         try {
@@ -46,6 +55,10 @@ const Result = ({data}) => {
             {successStatus && 
             <div>
                 <p>Operation Successful</p>
+                <div className={classes.modelScoreContainer}>
+                    <ModelScore scoreObjectData = {modelResultsObject} 
+                    scoreObjectLength = {resultObjectLength} />
+                </div>
                 <div className={classes.actionContainer}>
                     <button className={classes.downloadBtn} onClick={handleFileDownload}>
                         Download The Preprocessed File

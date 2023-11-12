@@ -71,7 +71,7 @@ const Form = ({getData}) => {
         setIsDone(true)
         setTimeout(()=>{
             setIsDone(false)
-        }, 5000);
+        }, 2000);
     }
 
     const {mutate: performRegressions, isLoading, error} = usePerformRegressions(getPreprocessedData);

@@ -1,0 +1,58 @@
+.scoreContainer {
+    width: 60%;
+    margin: 1rem auto;
+    background-color: rgb(212, 255, 249);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.scoreListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0.5rem;
+    animation: slideDown 0.5s linear;
+}
+
+.scoreList {
+    list-style: none;
+    width: 100%;
+}
+
+.scoreListHead,
+.scoreListValues {
+    display: flex;
+    gap: 2rem;
+}
+
+.scoreListHead p {
+    width: 100%;
+    margin: 0.5rem 0rem 0.7rem 0rem;
+    font-weight: 600;
+    font-size: 1.2rem;
+    /* text-align: center; */
+}
+
+.scoreListValues p {
+    width: 100%;
+    margin: 0.5rem 0rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.emptyModelList {
+    text-align: center;
+}
+
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
