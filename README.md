@@ -1,4 +1,4 @@
-Hello ML
+<h1>Hello ML</h1>
 - This is the front-end section of the project
 
 <h3> Hello ML is a pet project where I combined the powerful Data Science and Machine Learning Python Libraries with Python backend framework <b>Django</b>. And I integrated the with the front-end section of the application that is built using Javascript Library <b>React</b>. </h3>
