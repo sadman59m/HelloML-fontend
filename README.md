@@ -1,8 +1,10 @@
-# React + Vite
+Hello ML
+- This is the front-end section of the project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<h3> Hello ML is a pet project where I combined the powerful Data Science and Machine Learning Python Libraries with Python backend framework <b>Django</b>. And I integrated the with the front-end section of the application that is built using Javascript Library <b>React</b>. </h3>
 
-Currently, two official plugins are available:
+<h3>This Application takes a CSV file, a split ratio for splitting the dataset into training and testing data, and provides some <b>Regression</b> models which can
+be selected based on the user's choice. The Application will preprocess the dataset and provide a download link for downloading the preprocessed CSV file and show
+R<sup>2</sup> score for the selected models.</h3>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Live link: https://hello-ml-fontend.vercel.app/
