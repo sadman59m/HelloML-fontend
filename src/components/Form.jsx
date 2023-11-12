@@ -189,7 +189,7 @@ const Form = ({getData}) => {
                 <div className={classes.actionContainer}>
                 {!isLoading && !error && 
                 <button className={submitBtnClasses}>
-                    {isDone ? "Completed" : "Perform Actions"}
+                    {isDone ? "Completed" : "Begin Operation"}
                 </button>}
                 {isLoading && !error && <div className={classes.loadingBox}><LoadingWheel/></div>}
                 {error && <button className={classes.hasFailed}>

@@ -1,5 +1,5 @@
 .instruction-container {
-    background-color: rgb(241, 212, 212);
+    background-color: rgba(241, 212, 212, 0.8);
     width: 100vw;
     max-width: 90%;
     margin: 1rem auto;

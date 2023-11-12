@@ -69,9 +69,9 @@ const Instructions = ({instructions}) => {
                 </ul>
             </div>
             <DfTable serial="1" dataHead={tableDataHead} data={tableData}/>
-            <p>We will try to predict if the person will buy the product or not.</p>
+            <p>This App will try to predict if the person will buy the product or not and R<sup>2</sup> score will be shown.</p>
             <DfTable serial="2" dataHead={tableDataHead2} data={tableData2} />
-            <p>We will try to predict the Profit based on these features.</p>
+            <p>This App will try to predict the Profit based on these features and R<sup>2</sup> score will be shown.</p>
         </div>
         </>
     )

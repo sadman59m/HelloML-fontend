@@ -2,9 +2,9 @@ import classes from "./Intro.module.css";
 
 const Intro = () => {
     const creatorMessage = `
-        This project is intended for newbies in the fields Machine Leaning. Currenty, This application only works with
-        simple dataset containing only numerical and categorical values and Only for Regression Models.
-        But we hope you have a good time palying around with it and introduce yourself in the world of 
+        This project is intended for newbies in the fields Machine Leaning. Currenty, This application can work 
+        dataset containing only numerical and categorical values and for Regression Models.
+        But I hope you have a good time palying around with it and introducing yourself in the world of 
         Machine Learning.
     `;
     return (
@@ -15,7 +15,7 @@ const Intro = () => {
                 <p>{creatorMessage}</p>
             </div>
             <div className={classes["intro-container_body"]}>
-            <h2>WHAT WE WILL PERFORM</h2>
+            <h2>WHAT WILL BE DONE</h2>
                 <ul className={classes["intro-list"]}>
                     <li>The missing categorical data rows will be eliminated and cleaned.</li>
                     <li>The missing numerical data rows will be placed with mean value.</li>
